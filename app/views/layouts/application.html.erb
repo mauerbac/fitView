@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FitbitView</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+
+
+
+
+</head>
+<body>
+<ul>
+	<% if !current_user %>
+	<li><%= link_to "Sign in with Fitbit", user_omniauth_authorize_path(:fitbit) %></li>
+	<% end %>
+</ul>
+<%= yield %>
+
+</body>
+</html>
