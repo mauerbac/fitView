@@ -1,34 +1,3 @@
-Dashboard
+<h1>Dashboard</h1>
 
-
-adsadsds
-
-<%= current_user.token %>
-
-
-<script type="text/javascript">
-	userToken = <%= current_user.token %>
-
-var request = require('request')
-  , url = "http://api.fitbit.com/1/user/-/activities/date/2013-10-06.json"
-  , oauth = {
-      consumer_key: "37cfc08ef7c54780b4bc069b192b3b60",
-      consumer_secret: "91190063fe1244818766ad5695d33e5f",
-      token: userToken,
-      token_secret: "BWUXD2vmnQ2jlE0jmI56MzhJ2GQ%3D"
-    };
-
-
-function request_call() {
-request.post({url:url, oauth:oauth}, function (e, r, body) {
-  var json = JSON.parse(arguments[2]);
-  steps = json.summary.steps;
-  console.log(steps);
-  print(steps);
-
-  }
-
-}
-
-request_call();
- </script>
+Steps: <%= @steps %>
