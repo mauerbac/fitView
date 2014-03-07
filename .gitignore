@@ -17,3 +17,6 @@
 
 /config/fitgem.yml
 /config/initializers/fitbit_constants.rb
+
+# Ignore application configuration
+/config/application.yml
