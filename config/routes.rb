@@ -1,6 +1,10 @@
 FitbitView::Application.routes.draw do
+  get "static_pages/home"
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resource :dashboards
+
+  root  'static_pages#home'
+  match '/dashboard',  to: 'dashboards#show',            via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,9 @@
+<h1>Welcome to FitView</h1>
+
+
+	<% if !current_user %>
+	<%= button_to "Sign in with Fitbit", user_omniauth_authorize_path(:fitbit) %>
+	<% else %>
+	<%= link_to "You are already signed in. --> Go to Dashboard!", dashboard_path %>
+	<% end %>
+
