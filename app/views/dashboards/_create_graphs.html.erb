@@ -1,0 +1,37 @@
+<script>
+window.onload = function () {
+
+  var stepCountSevenDaysAgo = document.getElementById('one').innerHTML
+  var stepCountSixDaysAgo = document.getElementById('two').innerHTML
+  var stepCountFiveDaysAgo = document.getElementById('three').innerHTML
+  var stepCountFourDaysAgo = document.getElementById('four').innerHTML
+  var stepCountThreeDaysAgo = document.getElementById('five').innerHTML
+  var stepCountTwoDaysAgo = document.getElementById('six').innerHTML
+  var stepCountOneDaysAgo = document.getElementById('seven').innerHTML
+
+          var chart = new CanvasJS.Chart("chartContainer", {
+              theme: "theme2",//theme1
+              title:{
+                  text: "Step Count!"              
+             },
+              data: [              
+              {
+// Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                  type: "pie",
+                  dataPoints: [
+                  { label: "7 days ago", y: stepCountSevenDaysAgo },
+                  { label: "6 days ago", y: stepCountSixDaysAgo },
+                  { label: "5 days ago", y: stepCountFiveDaysAgo },
+                  { label: "4 days ago", y: stepCountFourDaysAgo },
+                  { label: "3 days ago", y: stepCountThreeDaysAgo },
+                  { label: "2 days ago", y: stepCountTwoDaysAgo },
+                  { label: "1 days ago", y: stepCountOneDaysAgo }
+                  ]
+              }
+              ]
+          });
+
+          chart.render();
+
+      }
+  </script>

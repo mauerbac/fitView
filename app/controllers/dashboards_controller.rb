@@ -10,16 +10,12 @@ class DashboardsController < ApplicationController
 
 		#Get user info
 		response = token.get("https://api.fitbit.com/1/user/-/profile.json")
-		json = JSON.parse(response.body)
-		@name=json['user']['displayName']
+		@json = JSON.parse(response.body)
+		@name=@json['user']['displayName']
 
 
-		#get current date
-		time= Time.now
+		#--------- Dates for past seven days -----------
 
-
-		#------ Override for testing ------ 
-		# cur_date="2014-02-17"
 		@date_today = Date.today.to_s
 		@date_one_days_ago= (Date.today - 1.days).to_s
 		@date_two_days_ago = (Date.today - 2.days).to_s
@@ -30,13 +26,22 @@ class DashboardsController < ApplicationController
 		@date_seven_days_ago = (Date.today - 7.days).to_s
 		#-------------------------------
 
-		#-------------- Gets steps for past seven days ----------	
-		@json = JSON.parse(token.get('http://api.fitbit.com/1/user/-/activities/date/' + @date_today + '.json').body)
+
+
+		# #-------------- Gets steps for past seven days ----------	
 		
-		@steps_past_seven_days_json = JSON.parse(token.get('http://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json').body)
-		
-		 @step_goal= @json['goals']['steps']
-		 @step_count = @json['summary']['steps']
+		 activities_past_seven_days = token.get('http://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json')
+		 activities_json = JSON.parse(activities_past_seven_days.body)
+		 @step_count_seven_days_ago = activities_json['activities-steps'][0]['value']
+		 @step_count_six_days_ago = activities_json['activities-steps'][1]['value']
+		 @step_count_five_days_ago = activities_json['activities-steps'][2]['value']
+		 @step_count_four_days_ago = activities_json['activities-steps'][3]['value']
+		 @step_count_three_days_ago = activities_json['activities-steps'][4]['value']
+		 @step_count_two_days_ago = activities_json['activities-steps'][5]['value']
+		 @step_count_one_days_ago = activities_json['activities-steps'][6]['value']
+
+	
+		#  @step_goal= @json['goals']['steps']
 
 		
 		# #This data could be super cool and isn't offered on Fitbit dashbaord. (besides very active mins)

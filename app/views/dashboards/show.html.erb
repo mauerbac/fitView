@@ -1,35 +1,16 @@
 <p>Welcome to your Dashboard: <%= @name %></p><br>
-
-<p>Total Steps today: <%= @step_count %> steps</p>
-<p>Goal for today: <%= @step_goal %> </p>
-
-<p id='fit'><%= [[[@step_goal], [@step_goal],[@step_goal],[@step_goal],[@step_goal]]] %></p>
+<p> step count 1 day ago<%= @json %></p>
 
 
-
-<p><%= @date_today %></p>
-<p><%= @date_one_days_ago %></p>
-<p><%= @date_two_days_ago %></p>
-<p><%= @date_three_days_ago %></p>
-<p><%= @date_four_days_ago %></p>
-<p><%= @date_five_days_ago %></p>
-<p><%= @date_six_days_ago %></p>
-<p><%= @date_seven_days_ago %></p>
-
-<p> Steps for past week <%= @step_count_seven_days_json  %></p>
+<div id='seven' class='hide'><%= @step_count_seven_days_ago %></div>
+<div id='six' class='hide'><%= @step_count_six_days_ago %></div>
+<div id= 'five' class='hide'><%= @step_count_five_days_ago %></div>
+<div id='four' class='hide'><%= @step_count_four_days_ago %></div>
+<div id='three' class='hide'><%= @step_count_three_days_ago %></div>
+<div id='two' class='hide'><%= @step_count_two_days_ago %></div>
+<div id='one' class='hide'><%= @step_count_one_days_ago %></div>
 
 
-<%= @test_date %>
+<%= render 'create_graphs' %>
 
-
-
-
-
-
-
-<script>
-	document.onload = function() {
-
-
-	};
-</script>
+<div id="chartContainer" style="height: 300px; width: 100%;">
