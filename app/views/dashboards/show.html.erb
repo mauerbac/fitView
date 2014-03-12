@@ -1,15 +1,14 @@
 <p>Welcome to your Dashboard: <%= @name %></p><br>
-<p> step count 1 day ago<%= @json %></p>
 
-
-<div id='seven' class='hide'><%= @step_count_seven_days_ago %></div>
 <div id='six' class='hide'><%= @step_count_six_days_ago %></div>
-<div id= 'five' class='hide'><%= @step_count_five_days_ago %></div>
-<div id='four' class='hide'><%= @step_count_four_days_ago %></div>
+<div id='five' class='hide'><%= @step_count_five_days_ago %></div>
+<div id= 'four' class='hide'><%= @step_count_four_days_ago %></div>
 <div id='three' class='hide'><%= @step_count_three_days_ago %></div>
 <div id='two' class='hide'><%= @step_count_two_days_ago %></div>
 <div id='one' class='hide'><%= @step_count_one_days_ago %></div>
+<div id='zero' class='hide'><%= @step_count_zero_days_ago %></div>
 
+<%= @activities_json %>
 
 <%= render 'create_graphs' %>
 

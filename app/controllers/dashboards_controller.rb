@@ -26,23 +26,21 @@ class DashboardsController < ApplicationController
 		@date_seven_days_ago = (Date.today - 7.days).to_s
 		#-------------------------------
 
-
-
-		# #-------------- Gets steps for past seven days ----------	
+		#-------------- Gets steps for past seven days ----------	
 		
 		 activities_past_seven_days = token.get('http://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json')
 		 activities_json = JSON.parse(activities_past_seven_days.body)
-		 @step_count_seven_days_ago = activities_json['activities-steps'][0]['value']
-		 @step_count_six_days_ago = activities_json['activities-steps'][1]['value']
-		 @step_count_five_days_ago = activities_json['activities-steps'][2]['value']
-		 @step_count_four_days_ago = activities_json['activities-steps'][3]['value']
-		 @step_count_three_days_ago = activities_json['activities-steps'][4]['value']
-		 @step_count_two_days_ago = activities_json['activities-steps'][5]['value']
-		 @step_count_one_days_ago = activities_json['activities-steps'][6]['value']
+
+		 @step_count_six_days_ago = activities_json['activities-steps'][0]['value']
+		 @step_count_five_days_ago = activities_json['activities-steps'][1]['value']
+		 @step_count_four_days_ago = activities_json['activities-steps'][2]['value']
+		 @step_count_three_days_ago = activities_json['activities-steps'][3]['value']
+		 @step_count_two_days_ago = activities_json['activities-steps'][4]['value']
+		 @step_count_one_days_ago = activities_json['activities-steps'][5]['value']
+		 @step_count_zero_days_ago = activities_json['activities-steps'][6]['value']
 
 	
 		#  @step_goal= @json['goals']['steps']
-
 		
 		# #This data could be super cool and isn't offered on Fitbit dashbaord. (besides very active mins)
 		# cur_fairly_active_minutes= json['summary']['fairlyActiveMinutes']
@@ -52,12 +50,5 @@ class DashboardsController < ApplicationController
 
 		# #we should check if greater than 1
 		# # @steps_remain= (@step_goal- @cur_steps)
-		
-
-		# respond_to do |format|
-		# 	format.html
-		# 	format.json {render json: json}
-		# end
-
 	end
 end
