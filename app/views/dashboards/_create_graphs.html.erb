@@ -1,18 +1,52 @@
 <script>
 window.onload = function () {
 
+
+var createLineChart = function() {
+    var sleepCountSixDaysAgo = parseInt(document.getElementById('sleepzero').innerHTML);
+    var sleepCountFiveDaysAgo = parseInt(document.getElementById('sleepone').innerHTML);
+    var sleepCountFourDaysAgo = parseInt(document.getElementById('sleeptwo').innerHTML);
+    var sleepCountThreeDaysAgo = parseInt(document.getElementById('sleepthree').innerHTML);
+    var sleepCountTwoDaysAgo = parseInt(document.getElementById('sleepfour').innerHTML);
+    var sleepCountOneDaysAgo = parseInt(document.getElementById('sleepfive').innerHTML);
+    var sleepCountZeroDaysAgo = parseInt(document.getElementById('sleepsix').innerHTML);
+
+        var lineChart = new CanvasJS.Chart("lineChartContainer", {
+                theme: "theme2",//theme1
+                title:{
+                    text: "Sleep Count!"              
+               },
+                data: [              
+                {
+  // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "spline",
+                    dataPoints: [
+                    { label: "7 days ago", y: sleepCountSixDaysAgo },
+                    { label: "6 days ago", y: sleepCountFiveDaysAgo },
+                    { label: "5 days ago", y: sleepCountFourDaysAgo },
+                    { label: "4 days ago", y: sleepCountThreeDaysAgo },
+                    { label: "3 days ago", y: sleepCountTwoDaysAgo },
+                    { label: "2 days ago", y: sleepCountOneDaysAgo },
+                    { label: "1 days ago", y: sleepCountZeroDaysAgo }
+                    ]
+                }
+                ]
+            });
+        lineChart.render()
+};
+
   
   var createBarChart = function() {
 
-    var stepCountSixDaysAgo = parseInt(document.getElementById('zero').innerHTML);
-    var stepCountFiveDaysAgo = parseInt(document.getElementById('one').innerHTML);
-    var stepCountFourDaysAgo = parseInt(document.getElementById('two').innerHTML);
-    var stepCountThreeDaysAgo = parseInt(document.getElementById('three').innerHTML);
-    var stepCountTwoDaysAgo = parseInt(document.getElementById('four').innerHTML);
-    var stepCountOneDaysAgo = parseInt(document.getElementById('five').innerHTML);
-    var stepCountZeroDaysAgo = parseInt(document.getElementById('six').innerHTML);
+    var stepCountSixDaysAgo = parseInt(document.getElementById('stepzero').innerHTML);
+    var stepCountFiveDaysAgo = parseInt(document.getElementById('stepone').innerHTML);
+    var stepCountFourDaysAgo = parseInt(document.getElementById('steptwo').innerHTML);
+    var stepCountThreeDaysAgo = parseInt(document.getElementById('stepthree').innerHTML);
+    var stepCountTwoDaysAgo = parseInt(document.getElementById('stepfour').innerHTML);
+    var stepCountOneDaysAgo = parseInt(document.getElementById('stepfive').innerHTML);
+    var stepCountZeroDaysAgo = parseInt(document.getElementById('stepsix').innerHTML);
 
-            var chart = new CanvasJS.Chart("chartContainer", {
+            var barChart = new CanvasJS.Chart("barChartContainer", {
                 theme: "theme2",//theme1
                 title:{
                     text: "Step Count!"              
@@ -34,14 +68,12 @@ window.onload = function () {
                 ]
             });
 
-            chart.render();
+            barChart.render();
 
   };
 
   createBarChart();
+  createLineChart();
 };
-
-
-
 
   </script>

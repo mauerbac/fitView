@@ -26,10 +26,10 @@ class DashboardsController < ApplicationController
 		@date_seven_days_ago = (Date.today - 7.days).to_s
 		#-------------------------------
 
-		#-------------- Gets steps for past seven days ----------	
+		#-------------- Gets for past seven days ----------	
 		
-		 activities_past_seven_days = token.get('http://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json')
-		 activities_json = JSON.parse(activities_past_seven_days.body)
+		 activities_count_past_seven_days = token.get('http://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json')
+		 activities_json = JSON.parse(activities_count_past_seven_days.body)
 
 		 @step_count_six_days_ago = activities_json['activities-steps'][0]['value']
 		 @step_count_five_days_ago = activities_json['activities-steps'][1]['value']
@@ -38,9 +38,21 @@ class DashboardsController < ApplicationController
 		 @step_count_two_days_ago = activities_json['activities-steps'][4]['value']
 		 @step_count_one_days_ago = activities_json['activities-steps'][5]['value']
 		 @step_count_zero_days_ago = activities_json['activities-steps'][6]['value']
-
 	
 		#  @step_goal= @json['goals']['steps']
+
+		sleep_past_seven_days = token.get('http://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/7d.json')
+		sleep_json = JSON.parse(sleep_past_seven_days.body)
+
+		 @sleep_count_six_days_ago = sleep_json['sleep-minutesAsleep'][0]['value']
+		 @sleep_count_five_days_ago = sleep_json['sleep-minutesAsleep'][1]['value']
+		 @sleep_count_four_days_ago = sleep_json['sleep-minutesAsleep'][2]['value']
+		 @sleep_count_three_days_ago = sleep_json['sleep-minutesAsleep'][3]['value']
+		 @sleep_count_two_days_ago = sleep_json['sleep-minutesAsleep'][4]['value']
+		 @sleep_count_one_days_ago = sleep_json['sleep-minutesAsleep'][5]['value']
+		 @sleep_count_zero_days_ago = sleep_json['sleep-minutesAsleep'][6]['value']
+	
+
 		
 		# #This data could be super cool and isn't offered on Fitbit dashbaord. (besides very active mins)
 		# cur_fairly_active_minutes= json['summary']['fairlyActiveMinutes']
