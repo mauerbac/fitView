@@ -1,7 +1,7 @@
 <script>
 window.onload = function () {
 
-
+/*
 var createLineChart = function() {
     var sleepCountSixDaysAgo = parseInt(document.getElementById('sleepzero').innerHTML);
     var sleepCountFiveDaysAgo = parseInt(document.getElementById('sleepone').innerHTML);
@@ -35,17 +35,9 @@ var createLineChart = function() {
         lineChart.render()
 };
 
-  
+*/
   var createBarChart = function() {
-
-    var stepCountSixDaysAgo = parseInt(document.getElementById('stepzero').innerHTML);
-    var stepCountFiveDaysAgo = parseInt(document.getElementById('stepone').innerHTML);
-    var stepCountFourDaysAgo = parseInt(document.getElementById('steptwo').innerHTML);
-    var stepCountThreeDaysAgo = parseInt(document.getElementById('stepthree').innerHTML);
-    var stepCountTwoDaysAgo = parseInt(document.getElementById('stepfour').innerHTML);
-    var stepCountOneDaysAgo = parseInt(document.getElementById('stepfive').innerHTML);
-    var stepCountZeroDaysAgo = parseInt(document.getElementById('stepsix').innerHTML);
-
+    var last7 = JSON.parse('<%= @last7.values.to_json.html_safe %>' )
             var barChart = new CanvasJS.Chart("barChartContainer", {
                 theme: "theme2",//theme1
                 title:{
@@ -56,24 +48,24 @@ var createLineChart = function() {
   // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
                     type: "column",
                     dataPoints: [
-                    { label: "7 days ago", y: stepCountSixDaysAgo },
-                    { label: "6 days ago", y: stepCountFiveDaysAgo },
-                    { label: "5 days ago", y: stepCountFourDaysAgo },
-                    { label: "4 days ago", y: stepCountThreeDaysAgo },
-                    { label: "3 days ago", y: stepCountTwoDaysAgo },
-                    { label: "2 days ago", y: stepCountOneDaysAgo },
-                    { label: "1 days ago", y: stepCountZeroDaysAgo }
+                    { label: "7 days ago", y: parseInt(last7[0]) },
+                    { label: "6 days ago", y: parseInt(last7[1]) },
+                    { label: "5 days ago", y: parseInt(last7[2]) },
+                    { label: "4 days ago", y: parseInt(last7[3]) },
+                    { label: "3 days ago", y: parseInt(last7[4])},
+                    { label: "2 days ago", y: parseInt(last7[5]) },
+                    { label: "1 days ago", y: parseInt(last7[6]) }
                     ]
                 }
                 ]
             });
-
             barChart.render();
+            debugger
 
   };
 
   createBarChart();
-  createLineChart();
+  //createLineChart();
 };
 
   </script>
