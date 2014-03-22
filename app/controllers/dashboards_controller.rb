@@ -47,7 +47,16 @@ class DashboardsController < ApplicationController
 
 
 		@yesterday_steps=Integer(@last7.values[5])
-		@delta = @steps-@yesterday_steps
+		delta = @steps-@yesterday_steps
+
+		if delta > 1
+			@delta="You walked " + delta.to_s + " more steps than yesterday"
+		else
+			delta+1
+			delta=delta.abs
+			@delta="You need " + delta.to_s  + " more steps to beat yesterdays count"
+		end
+
 
 	end
 
