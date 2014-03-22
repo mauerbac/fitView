@@ -41,8 +41,9 @@ class DashboardsController < ApplicationController
 		@steps = cur_steps
 
 
-		@last7= get_last7_steps(cur_date,token)
+		last7= get_last7_steps(cur_date,token)	
 
+		@last7=last7
 		@last7_sleep= get_last7_sleep(cur_date,token)
 
 
@@ -56,6 +57,27 @@ class DashboardsController < ApplicationController
 			delta=delta.abs
 			@delta="You need " + delta.to_s  + " more steps to beat yesterdays count"
 		end
+
+		if cur_steps > step_goal
+			@completeGoal="You beat today's goal"
+		else
+			stepsLeft= step_goal-cur_steps
+			@completeGoal="You have " + stepsLeft.to_s + " to go!"
+		end
+
+		bestDay=""
+		bestValue=0
+		totalStep=0
+		last7.each do |key, value|
+			totalStep=totalStep + value.to_i
+			if bestValue < value.to_i
+				bestValue=value.to_i
+				bestDay=key
+			end
+		end
+		@bestDay= bestDay
+		@bestValue=bestValue
+		@totalStep=totalStep
 
 
 	end
